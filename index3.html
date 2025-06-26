@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Origem do Studio Ghibli</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      min-height: 100vh;
+      color: #333;
+      padding: 20px;
+      overflow-x: hidden;
+      transition: background 0.5s, color 0.5s;
+      opacity: 0;
+      animation: fadeIn 1.2s forwards;
+    }
+
+    body.dark {
+      background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+      color: #ddd;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header {
+      text-align: center;
+      font-size: 2.8em;
+      font-weight: 900;
+      margin-bottom: 20px;
+      font-family: 'Cursive', 'Comic Sans MS', cursive;
+      color:#FFE4E1;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+
+    button#themeToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background:#B0E0E6;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(46,139,87,0.4);
+      transition: background 0.3s;
+      z-index: 1001;
+    }
+
+    button#themeToggle:hover {
+      background:   #FFF0F5;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 0 auto 50px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(46, 139, 87, 0.25);
+      transition: background 0.5s;
+    }
+
+    body.dark section {
+      background: rgba(30, 30, 30, 0.85);
+      box-shadow: 0 10px 25px rgba(30, 100, 120, 0.8);
+    }
+
+    h2 {
+      color: #C71585;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    body.dark h2 {
+      color: #7fd2a7;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .founders {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .founder-card {
+      background:   #87CEFA;
+      flex: 1 1 250px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(46,139,87,0.3);
+      cursor: pointer;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark .founder-card {
+      background: #0000FF;
+      box-shadow: 0 8px 20px rgba(100,180,150,0.8);
+      color: #ccead6;
+    }
+
+    .founder-card:hover {
+      transform: scale(1.08);
+      box-shadow: 0 15px 30px rgba(46,139,87,0.6);
+    }
+
+    .founder-name {
+      font-size: 1.4em;
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+    }
+
+    .founder-role {
+      font-style: italic;
+      color:    #555;
+      margin-bottom: 12px;
+    }
+
+    body.dark .founder-role {
+      color:  #00BFFF;
+    }
+
+    .modal-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-bg.active {
+      display: flex;
+      animation: fadeInModal 0.4s ease forwards;
+    }
+
+    @keyframes fadeInModal {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 600px;
+      border-radius: 15px;
+      padding: 25px 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      position: relative;
+      color: #333;
+      font-size: 1.1em;
+    }
+
+    body.dark .modal-content {
+      background: #4169E1;
+      color: #ddd;
+      box-shadow: 0 10px 30px rgba(10, 50, 40, 0.8);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.8em;
+      font-weight: 900;
+      color:  #888;
+      cursor: pointer;
+      transition: color 0.3s;
+      user-select: none;
+    }
+
+    .modal-close:hover {
+      color: #00FFFF;
+    }
+
+    body.dark .modal-close:hover {
+      color: #7fd2a7;
+    }
+
+    .modal-title {
+      font-weight: 900;
+      margin-bottom: 15px;
+      font-size: 1.7em;
+      color:  #FF1493;
+    }
+
+    body.dark .modal-title {
+      color: #7fd2a7;
+    }
+
+    #curiosidades {
+      max-width: 900px;
+      margin: 0 auto 50px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(139, 0, 0, 0.2);
+      animation: slideUp 1.2s ease-out both;
+    }
+
+    body.dark #curiosidades {
+      background: rgba(30, 30, 30, 0.85);
+      color: #ccc;
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+    }
+
+    .curiosidades-lista {
+      list-style: none;
+      font-size: 1.1em;
+      margin-top: 15px;
+    }
+
+    .curiosidades-lista li {
+      margin-bottom: 12px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .curiosidades-lista li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      background-color: #2e8b57;
+      color: white;
+      border: none;
+      padding: 14px 18px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: background 0.3s;
+    }
+
+    #backToTop:hover {
+      background-color: #FFC0CB;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: rgba(255,255,255,0.6);
+      color: #333;
+      font-size: 0.95em;
+      border-top: 1px solid #ccc;
+    }
+
+    body.dark footer {
+      background: rgba(20,20,20,0.6);
+      color: #aaa;
+      border-top: 1px solid #444;
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggle" aria-label="Alternar tema">Modo Escuro</button>
+
+  <header>Origem do Studio Ghibli</header>
+
+  <section>
+    <h2>História do Studio Ghibli</h2>
+    <p>
+     O Studio Ghibli é um estúdio de animação japonês, sediado em Koganei, Tóquio. Fundado em 1985, o estúdio já produziu 24 longas de animação, sendo o primeiro O Castelo no Céu (1986) e o mais recente As Memórias de Marnie (2014).
+    </p>
+    <p>
+      O nome "Ghibli" foi escolhido por Miyazaki em referência a um avião italiano da Segunda Guerra Mundial, simbolizando o desejo de "soprar um vento quente" na indústria da animação.
+    </p>
+    <p>
+      <b>“A criação de um único mundo vem de um grande número de fragmentos e caos.”</b>- Hayao Miyazaki
+    </p>
+    <p>
+      <b>“A animação é o meio artístico ideal para mostrar uma história de um realismo tão brutal.”</b>- Isao Takahata
+    </p>
+  </section>
+
+  <section>
+    <h2>Fundadores</h2>
+    <div class="founders">
+      <div class="founder-card" data-name="Hayao Miyazaki" data-role="Co-fundador e Diretor" data-bio="Hayao Miyazaki é um animador, cineasta, roteirista, escritor e artista de mangá japonês. É cofundador do Studio Ghibli, uma companhia de cinema e animação, e conquistou reconhecimento e aclamação internacional pela qualidade de seus vários longas-metragens de animação, os quais normalmente escreve e dirige. É amplamente considerado um dos principais nomes da indústria de animação japonesa.
+
+Os trabalhos de Miyazaki são caracterizados pela recorrência de diversos temas, como a relação da humanidade com a natureza e a tecnologia, a preservação de padrões de vida naturais e tradicionais, a importância da arte e da perícia, e a dificuldade de manter uma ética pacifista em um mundo violento.
+
+Suas protagonistas são frequentemente meninas ou jovens mulheres fortes, com muitos de seus trabalhos apresentando antagonistas ambíguos, que possuem qualidades redentoras. Suas obras já foram amplamente elogiadas e premiadas, com Miyazaki recebendo um Oscar Honorário em novembro de 2014 por suas contribuições à animação.">
+        <div class="founder-name">Hayao Miyazaki</div>
+        <div class="founder-role">Co-fundador e Diretor</div>
+      </div>
+      <div class="founder-card" data-name="Isao Takahata" data-role="Co-fundador e Diretor" data-bio="Isao Takahata foi um diretor, roteirista e produtor de cinema japonês. Em 1985, ele co-fundou o Studio Ghibli com seu parceiro de longa data Hayao Miyazaki e os colaboradores de Miyazaki, Toshio Suzuki e Yasuyoshi Tokuma.
+  Takahata ganhou elogios da crítica internacional por seu trabalho como diretor de filmes de animação, entre eles Túmulo dos Vagalumes (1988), Memórias de Ontem (1991), Pom Poko (1994) e Meus Vizinhos os Yamadas (1999).
+  Seu último filme como diretor foi O Conto da Princesa Kaguya (2013), indicado ao Oscar na categoria de Melhor Filme de Animação na 87º Cerimônia do Oscar.">
+        <div class="founder-name">Isao Takahata</div>
+        <div class="founder-role">Co-fundador e Diretor</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="curiosidades">
+    <h2>Curiosidades sobre o Studio Ghibli</h2>
+    <ul class="curiosidades-lista">
+      <li>🎬 A Viagem de Chihiro foi o primeiro anime a ganhar o Oscar de Melhor Animação.</li>
+      <li>🌱 Miyazaki é conhecido por evitar o uso de scripts tradicionais — ele "descobre a história ao longo da produção".</li>
+      <li>✈️ O nome "Ghibli" também significa um vento quente vindo do deserto.</li>
+      <li>🎨 Os filmes têm trilhas sonoras originais compostas por Joe Hisaishi.</li>
+    </ul>
+  </section>
+
+  <div class="modal-bg" id="modal">
+    <div class="modal-content">
+      <div class="modal-close" id="modalClose">&times;</div>
+      <div class="modal-title" id="modalName"></div>
+      <div class="modal-role" id="modalRole"></div>
+      <div class="modal-bio" id="modalBio"></div>
+    </div>
+  </div>
+
+  <button id="backToTop" title="Voltar ao topo">⬆️</button>
+
+  <footer>
+    <p>🌸 Página criada para homenagear o legado do Studio Ghibli. | Desenvolvido com 💖</p>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      themeToggle.textContent = document.body.classList.contains('dark') ? 'Modo Claro' : 'Modo Escuro';
+    });
+
+    const modal = document.getElementById('modal');
+    const modalClose = document.getElementById('modalClose');
+    const modalName = document.getElementById('modalName');
+    const modalRole = document.getElementById('modalRole');
+    const modalBio = document.getElementById('modalBio');
+
+    document.querySelectorAll('.founder-card').forEach(card => {
+      card.addEventListener('click', () => {
+        modalName.textContent = card.getAttribute('data-name');
+        modalRole.textContent = card.getAttribute('data-role');
+        modalBio.textContent = card.getAttribute('data-bio');
+        modal.classList.add('active');
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+      }
+    });
+
+    const backToTopBtn = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>

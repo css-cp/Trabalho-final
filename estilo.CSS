@@ -1,0 +1,38 @@
+body {
+    background-image: url("img2.jpeg");
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    animation: cai 3s linear infinite;
+}
+
+
+
+@keyframes cai {
+    0% {
+        background-position: bottom;
+    }
+    100% {
+        background-position: top;
+    }
+}
+h1 {
+    color: #F0FFFF;
+    font-family: Impact, sans-serif;
+    font-size: 80px;
+    align-items: center;
+}
+overlay {
+    background-color: rgba(30, 30, 30 / 20%);
+    backdrop-filter: blur(10px);
+}
+.meu-botao {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}

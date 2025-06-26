@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    color: white;
+  }
+  
+  .background-blur {
+    position: fixed;
+    inset: 0;
+    background: url('img1.jpg') center/cover no-repeat;
+    filter: blur(3px);
+    z-index: -2;
+  }
+  
+  .background-blur::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0) 50%);
+    pointer-events: none;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .titulo-img{
+    display: block;
+    margin: 60px auto;
+    max-width: 400px;
+    height: auto;
+  }
+
+  body {
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #778899;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  section {
+    padding: 100px 20px;
+    margin-top: 60px; /* Espaço pra compensar navbar */
+    min-height: 100vh;
+  }
+  
+  section:nth-child(odd) {
+    background-color: transparent;
+  }
+  
+  section:nth-child(even) {
+    background-color: transparent;
+  }
+  
+  button{
+    margin-top: 30px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    font-family: Candara;
+    font-size: 17px;
+    font-weight: 500;
+    color: #ffffff80;
+    text-shadow: none;
+    background: transparent;
+    cursor: pointer;
+    box-shadow: transparent;
+    border: 1px solid #ffffff80;
+    transition: 0.5s ease;
+    user-select: none;
+  }
+  button:hover{
+    color: #ffffff;
+    background: #87CEFA;
+    border: 1px solid;
+    text-shadow: 
+    0 0 5px #ffffff, 
+    0 0 10px #ffffff, 
+    0 0 20px #ffffff;
+    box-shadow: 
+    0 0 0 4px #fff, 
+    0 0 0 8px #87CEFA;
+  }

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Formulário com Estilo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      background: #000;
+    }
+
+    .background-blur {
+      position: fixed;
+      inset: 0;
+      background: url('img1.jpeg') center/cover no-repeat;
+      filter: blur(3px);
+      z-index: -2;
+    }
+
+    .background-blur::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0) 50%);
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+      color: white;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 100%;
+      color: #333;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #357ab7;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-blur"></div>
+
+  <div class="content">
+    <div class="form-container">
+      <h2>🎬 Selecione seu filme preferido!</h2>
+      <form>
+        <label for="meuSelect">Filme:</label>
+        <select id="meuSelect">
+          <option value="">Escolha aqui!</option>
+          <option>Princesa Mononoke</option>
+          <option>O Túmulo dos Vagalumes</option>
+          <option>O Castelo Animado</option>
+          <option>Meu Amigo Totoro</option>
+          <option>Ponyo: Uma Amizade que Veio do Mar</option>
+          <option>A Viagem de Chihiro</option>
+          <option>O Serviço de Entregas da Kiki</option>
+          <option>Sussurros do Coração</option>
+          <option>O Reino dos Gatos</option>
+          <option>As Memórias de Marnie</option>
+          <option>O Conto da Princesa Kaguya</option>
+        </select>
+
+        <h1>📬 Entre em contato!</h1>
+
+        <label for="nome">Nome:</label>
+        <input id="nome" type="text" placeholder="Digite seu nome" />
+
+        <label for="telefone">Telefone:</label>
+        <input id="telefone" type="text" placeholder="(00) 00000-0000" />
+
+        <label for="email">Email:</label>
+        <input id="email" type="text" placeholder="seuemail@exemplo.com" />
+
+        <label for="mensagem">Deixe sua opinião:</label>
+        <textarea id="mensagem" cols="50" rows="4" placeholder="Sua mensagem aqui..."></textarea>
+
+        <button type="button" onclick="inicio()"> Invocar um Personagem</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  function inicio() {
+    const personagens = [
+      { nome: "Chihiro", frase: "A coragem não é a ausência do medo, é agir apesar dele." },
+      { nome: "Totoro", frase: "A natureza cuida de quem cuida dela." },
+      { nome: "Ashitaka", frase: "Viva em harmonia com os outros e consigo mesmo." },
+      { nome: "Kiki", frase: "Acredite no seu talento, mesmo quando duvidarem." },
+      { nome: "Haku", frase: "Não se esqueça de quem você é." },
+      { nome: "Ponyo", frase: "O amor pode transformar o mundo." },
+      { nome: "Mononoke", frase: "A floresta fala — basta saber ouvir." },
+    ];
+
+    let nome = document.getElementById('nome').value.trim();
+    if (!nome) {
+      nome = prompt('Qual é o seu nome?');
+    }
+
+    if (nome) {
+      const escolhido = personagens[Math.floor(Math.random() * personagens.length)];
+      alert(`Olá, ${nome}! Volte sempre!\n\n💬 ${escolhido.nome} diz: "${escolhido.frase}"`);
+    } else {
+      alert('Por favor, insira seu nome.');
+    }
+  }
+</script>
+
+</html>
